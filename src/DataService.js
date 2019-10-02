@@ -6,6 +6,7 @@ function getManagers() {
     Http.send();
 
     Http.onreadystatechange = () => {
+        
         updateElement('managers', Http.responseText);
     }
 }
