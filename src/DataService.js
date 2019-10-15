@@ -1,16 +1,45 @@
+const baseUrl = 'http://localhost:8080/';
+const allEmployeesUrl = baseUrl + 'allemployees';
+const juniorsUrl = baseUrl + 'juniors';
+const programmersUrl = baseUrl + 'programmers';
+const engineersUrl = baseUrl + 'engineers';
+const expertsUrl = baseUrl + 'experts';
+const managersUrl = baseUrl + 'managers';
+const adminsUrl = baseUrl + 'admins';
+
+function getAllEmployees() {
+    getByUrl(allEmployeesUrl);
+}
+function getJuniors() {
+    getByUrl(juniorsUrl);
+}
+function getProgrammers() {
+    getByUrl(programmersUrl);
+}
+function getEngineers() {
+    getByUrl(engineersUrl);
+}
+function getExperts() {
+    getByUrl(expertsUrl);
+}
 function getManagers() {
-    console.log("getManagers");
+    getByUrl(managersUrl);
+}
+function getAdmins() {
+    getByUrl(adminsUrl);
+}
+
+function getByUrl(url) {
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:8080/managers';
     Http.open("GET", url);
     Http.send();
-
     Http.onreadystatechange = () => {
-        
-        updateElement('managers', Http.responseText);
+        const text = formatResponse(url, Http.responseText);
+        document.getElementById('employeesArea').innerHTML = text
     }
 }
 
-function updateElement(id, text){
-    document.getElementById(id).innerHTML = text; 
+function formatResponse(url, responseText) {
+    const tableHead = String(url).split('/').slice(-1).pop();
+    return tableHead;
 }
