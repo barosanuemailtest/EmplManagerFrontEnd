@@ -41,6 +41,7 @@ function getByUrl(url) {
             document.getElementById('employeesArea').innerHTML = text
         }
     }
+    clearEmployeeArea();
 }
 
 function formatResponse(url, responseText) {
@@ -51,12 +52,24 @@ function formatResponse(url, responseText) {
     for (x in employess) {
         response += "<tr><td>";
         response += '<input type="button" onClick="printEmployeeDetails(\'' + x + '\')" value="\'' + employess[x].name + '\'"/>'
-        response += "</tr></td>";
+        response += "</td></tr>";
     }
     response += "</table>";
     return response;
 }
 
 function printEmployeeDetails(index){
-    console.log(employess[index]);
+    const employee = employess[index];
+    var response = "<table border='1'><th colspan='2'>Employee details</th>";;
+    var keys = Object.keys(employee);
+    for (var i = 0; i < keys.length; i++) {
+        response += "<tr><td>" + [keys[i]] + "</td>";
+        response += "<td>" + employee[keys[i]] + "</td></tr>"
+    }
+    response += "</table>";
+    document.getElementById('employeesDetailsArea').innerHTML = response
+}
+
+function clearEmployeeArea(){
+    document.getElementById('employeesDetailsArea').innerHTML = '';
 }
