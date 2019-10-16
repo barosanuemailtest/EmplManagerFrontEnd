@@ -7,6 +7,8 @@ const expertsUrl = baseUrl + 'experts';
 const managersUrl = baseUrl + 'managers';
 const adminsUrl = baseUrl + 'admins';
 
+let employess = [];
+
 function getAllEmployees() {
     getByUrl(allEmployeesUrl);
 }
@@ -46,10 +48,15 @@ function formatResponse(url, responseText) {
     const tableHead = String(url).split('/').slice(-1).pop();
     response += "<table border='1'><th>" + tableHead + "</th>";
     employess = JSON.parse(responseText);
-    console.log(employess);
     for (x in employess) {
-        response += "<tr><td>" + employess[x].name + "</td></tr>";
+        response += "<tr><td>";
+        response += '<input type="button" onClick="printEmployeeDetails(\'' + x + '\')" value="\'' + employess[x].name + '\'"/>'
+        response += "</tr></td>";
     }
     response += "</table>";
     return response;
+}
+
+function printEmployeeDetails(index){
+    console.log(employess[index]);
 }
