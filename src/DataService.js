@@ -36,7 +36,7 @@ function getByUrl(url) {
     Http.open("GET", url);
     Http.send();
     Http.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             const text = formatResponse(url, Http.responseText);
             document.getElementById('employeesArea').innerHTML = text
         }
@@ -58,9 +58,9 @@ function formatResponse(url, responseText) {
     return response;
 }
 
-function printEmployeeDetails(index){
+function printEmployeeDetails(index) {
     const employee = employess[index];
-    var response = "<table border='1'><th colspan='2'>Employee details</th>";;
+    var response = "<table border='1'><th colspan='2'>Employee details</th>";
     var keys = Object.keys(employee);
     for (var i = 0; i < keys.length; i++) {
         response += "<tr><td>" + [keys[i]] + "</td>";
@@ -70,6 +70,6 @@ function printEmployeeDetails(index){
     document.getElementById('employeesDetailsArea').innerHTML = response
 }
 
-function clearEmployeeArea(){
+function clearEmployeeArea() {
     document.getElementById('employeesDetailsArea').innerHTML = '';
 }
