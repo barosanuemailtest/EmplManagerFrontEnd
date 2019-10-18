@@ -5,19 +5,21 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <script src="src/DataService.js"></script>
 </head>
 
 <body>
     <div id="container">
-        <script src="src/DataService.js"></script>
+
         <h2>Employees:</h2>
         <button type="button" onclick="getAllEmployees()">Get all employees</button>
         <button type="button" onclick="getManagers()">Get Managers</button>
         <button type="button" onclick="getEngineers()">Get Engineers</button>
-        <div id ="data">
+        <div id="data">
             <div id="employeesArea">employeesArea</div>
             <div id="employeesDetailsArea">employeesDetailsArea</div>
         </div>
     </div>
 </body>
+
 </html>
