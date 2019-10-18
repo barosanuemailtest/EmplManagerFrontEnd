@@ -1,3 +1,5 @@
 {
-    "eslint.validate": [ "javascript", "html" ]
+    "eslint.validate": [ "javascript" ],
+    "html.validate.scripts": true,
+    "html.validate.styles": true
 }
